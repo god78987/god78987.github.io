@@ -73,7 +73,7 @@ class GaloisField64 {
 		return this;
 	}
 	mul(a, b){	
-		
+		/*
 		this.num = a.num*b.num;
 		var temp = this.num/91;
 		while(temp>=1){
@@ -81,7 +81,7 @@ class GaloisField64 {
 			this.num = this.num^(91*Math.pow(2, temp));
 			temp = this.num/91;
 		}
-		/*
+		*/
 		if(a.num==0||b.num==0){
 			this.num = 0;
 		}else{
@@ -91,7 +91,7 @@ class GaloisField64 {
 			}
 			this.num = gf64[this.num];
 		}
-		*/
+		
 		return this;
 	}
 }
