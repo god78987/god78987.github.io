@@ -78,7 +78,7 @@ class GaloisField64 {
 	}
 	mul(a, b){	
 		/*
-		//Case 1:
+		//method 1:
 		this.num = 0;
 		var temp = dec2bin(a.num);
 		for (var i = 0; i < temp.length; i++) {
@@ -95,7 +95,7 @@ class GaloisField64 {
 			temp = this.num/64;
 		}
 		*/
-		//Case 2:
+		//method 2:
 		if(a.num==0||b.num==0){
 			this.num = 0;
 		}else{
