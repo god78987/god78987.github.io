@@ -44,6 +44,10 @@ var gf64 = [0, 2, 4, 8, 16, 32, 27, 54, 55, 53, 49, 57, 41, 9, 18, 36, 19, 38, 2
 var key;
 var flag;
 
+function dec2bin(dec) {
+  return (dec >>> 0).toString(2);
+}
+
 class GaloisField64 {
 	constructor(charInput) {
 		this.num = 0;
@@ -74,14 +78,24 @@ class GaloisField64 {
 	}
 	mul(a, b){	
 		/*
-		this.num = a.num*b.num;
-		var temp = this.num/91;
+		//Case 1:
+		this.num = 0;
+		var temp = dec2bin(a.num);
+		for (var i = 0; i < temp.length; i++) {
+		   if(temp[i] == '1'){
+				this.num ^= b.num;
+		   }
+		   this.num <<= 1;
+		}
+		this.num >>= 1;
+		temp = this.num>>6;
 		while(temp>=1){
-			temp = Math.floor(Math.sqrt(Math.floor(temp)));
+			temp = Math.floor(Math.log2(temp));
 			this.num = this.num^(91*Math.pow(2, temp));
-			temp = this.num/91;
+			temp = this.num/64;
 		}
 		*/
+		//Case 2:
 		if(a.num==0||b.num==0){
 			this.num = 0;
 		}else{
@@ -91,7 +105,6 @@ class GaloisField64 {
 			}
 			this.num = gf64[this.num];
 		}
-		
 		return this;
 	}
 }
